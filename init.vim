@@ -1,3 +1,7 @@
+:set number
+:set relativenumber
+
+
 call plug#begin(stdpath('data') . '/plugged')
 
 " main one
@@ -8,7 +12,20 @@ Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'nvim-lualine/lualine.nvim'
 
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+Plug 'preservim/nerdtree'
+
+
 call plug#end()
+
+
+nnoremap <C-f> :NERDTreeFocus<CR>
+nnoremap <C-n> :NERDTree<CR>
+nnoremap <C-t> :NERDTreeToggle<CR>
+
+
+
 
 lua << END
 require'lualine'.setup {
@@ -17,5 +34,5 @@ require'lualine'.setup {
 		theme = 'powerline_dark',
 	}
 }
-END
 
+END
