@@ -1,19 +1,19 @@
-background_opacity: 0.75
+background_opacity: 0.90
 
 font:
   normal:
-    family: Hack
+    family: FiraCode Nerd Font
     style: Regular
 
   bold:
-    family: Hack
+    family: FiraCode Nerd Font
     style: Bold
 
   italic:
-    family: Hack
+    family: FiraCode Nerd Font
     style: Italic
 
-  size: 10
+  size: 12 
   use_thin_strokes: true
 
 window:
