@@ -1,6 +1,6 @@
 :set number
 :set relativenumber
-
+:set autoindent
 
 call plug#begin(stdpath('data') . '/plugged')
 
