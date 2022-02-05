@@ -98,8 +98,7 @@ source $ZSH/oh-my-zsh.sh
 #
 # Example aliases
 alias zshconfig="nvim ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-
+alias vim="nvim"
 alias ls="exa -l"
 alias ll="exa -la"
 
@@ -108,14 +107,14 @@ alias ll="exa -la"
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/hanz/.anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+__conda_setup="$('/home/hanz/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
-    if [ -f "/home/hanz/.anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/hanz/.anaconda3/etc/profile.d/conda.sh"
+    if [ -f "/home/hanz/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/hanz/anaconda3/etc/profile.d/conda.sh"
     else
-        export PATH="/home/hanz/.anaconda3/bin:$PATH"
+        export PATH="/home/hanz/anaconda3/bin:$PATH"
     fi
 fi
 unset __conda_setup
@@ -124,4 +123,17 @@ unset __conda_setup
 # npm global 
 export PATH=~/.npm-global/bin:$PATH
 
+# pycharm
+export PATH=/opt/pycharm-community-2021.3.2/bin:$PATH
+
+# rancher
+export PATH=/home/hanz/.local/bin:$PATH
+
+# Go
+export GOBIN=/home/hanz/bin/go
+export GOPATH=/home/hanz/Projects/go
+export PATH=$GOBIN:$PATH
+
+# zypper alias
+alias zyp="sudo zypper"
 
