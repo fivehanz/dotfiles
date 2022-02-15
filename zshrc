@@ -101,6 +101,12 @@ alias zshconfig="nvim ~/.zshrc"
 alias vim="nvim"
 alias ls="exa -l"
 alias ll="exa -la"
+# zypper alias
+alias zyp="sudo zypper"
+#kubectl
+alias k="kubectl"
+# nerdctl --> docker
+alias docker="nerdctl"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
@@ -134,6 +140,4 @@ export GOBIN=/home/hanz/bin/go
 export GOPATH=/home/hanz/Projects/go
 export PATH=$GOBIN:$PATH
 
-# zypper alias
-alias zyp="sudo zypper"
 

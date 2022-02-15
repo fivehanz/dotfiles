@@ -2,6 +2,8 @@
 :set relativenumber
 :set autoindent
 
+set scrolloff=7
+
 filetype on
 filetype indent on
 filetype plugin on
