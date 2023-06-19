@@ -53,6 +53,7 @@
 					})
 
 					inputs.home-manager.darwinModules.home-manager {
+						users.users.hanz.home = "/Users/hanz";
 						home-manager = {
 							useGlobalPkgs = true;
 							useUserPackages = true;
@@ -87,7 +88,6 @@
 
 										discord
 										obsidian
-										spotify
 									];
 
 									home.sessionVariables = {
