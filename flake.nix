@@ -16,7 +16,7 @@
 		darwin = {
 			url = "github:lnl7/nix-darwin";
 			inputs.nixpkgs.follows = "nixpkgs";
-		}
+		};
 	};
 
 	outputs = inputs: {
@@ -24,7 +24,10 @@
 			
 			mba2020 = inputs.darwin.lib.darwinSystem {
 				system = "aarch64-darwin";
-				pkgs = import inputs.nixpkgs { system = "aarch64-darwin"; };
+				pkgs = import inputs.nixpkgs { 
+					system = "aarch64-darwin";
+					config.allowUnfree = true;
+				};
 
 				modules = [
 					({pkgs, ...}: {
@@ -33,6 +36,7 @@
 						environment.shells = [pkgs.bash pkgs.zsh];
 						environment.loginShell = pkgs.zsh;
 
+						
 						environment.systemPackages = [
 							pkgs.coreutils
 						];
@@ -56,7 +60,7 @@
 							users.hanz.imports = [
 								({ pkgs, ... }: {
 									home.username = "hanz";
-									home.homeDirectory = "/Users/hanz";
+									home.homeDirectory = pkgs.lib.mkDefault "/Users/hanz";
 
 									### Don't change this when you change package input. Leave it alone. ###
 									home.stateVersion = "23.05";
@@ -84,8 +88,6 @@
 										discord
 										obsidian
 										spotify
-										calibre
-										brave
 									];
 
 									home.sessionVariables = {
@@ -118,7 +120,7 @@
 											pull.rebase = true;
 											init.defaultBranch = "main";
 											github.user = "fivehanz";
-										}
+										};
 									};	
 
 									programs.tmux = {
