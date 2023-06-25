@@ -110,6 +110,8 @@
                     discord
                     obsidian
                     vscode
+                    # inputs.nixpkgs-unstable.legacyPackages.aarch64-darwin.calibre
+                    # calibre
                   ];
 
                   home.sessionVariables = {
@@ -119,17 +121,17 @@
                   };
 
                   # programs to install
-                  
+
                   programs.zoxide = {
                     enable = true; # smarter 'cd'
                     enableFishIntegration = true;
                   };
-                  
+
                   programs.bat.enable = true;
                   # programs.bat.config.theme = "TwoDark";
                   programs.fzf.enable = true;
                   programs.fzf.enableFishIntegration = true;
-                  
+
                   programs.fish.enable = true;
                   programs.fish.shellAliases = {
                     ls = "ls --color=auto -F";
