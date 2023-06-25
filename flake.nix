@@ -102,17 +102,20 @@
 
                     httpstat
                     curlie
+                    trippy # network diagnostics tool
 
-                    tailscale
-                    caddy
+                    tailscale 
+                    caddy # quick web server
 
                     ## mac desktop specific apps
                     iterm2
                     discord
                     obsidian
                     vscode
+                    raycast
                     # inputs.nixpkgs-unstable.legacyPackages.aarch64-darwin.calibre
                     # calibre
+                    # amethyst -- not available on nix, use homebrew instead
                   ];
 
                   home.sessionVariables = {
