@@ -1,6 +1,7 @@
 ####
 ## nix build .#darwinConfigurations.mkDarwin.system
 ## ./result/sw/bin/darwin-rebuild switch --flake ~/Projects/dotfiles#mkDarwin
+## darwin-rebuild switch --flake ~/Projects/dotfiles#mkDarwin
 ####
 {
   description = "root & home-manager nix flake";
