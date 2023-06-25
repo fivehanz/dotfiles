@@ -1,138 +1,191 @@
+####
+## nix build .#darwinConfigurations.mkDarwin.system
+## ./result/sw/bin/darwin-rebuild switch --flake ~/Projects/dotfiles#mkDarwin
+####
 {
-	description = "root nix flake";
+  description = "root & home-manager nix flake";
 
-	inputs = {
-		# nixpkgs url
-		nixpkgs.url = "github:nixos/nixpkgs/release-23.05";
-		nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+  inputs = {
+    # nixpkgs url
+    nixpkgs.url = "github:nixos/nixpkgs/release-23.05";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
 
-		# links configs to home directory 
-		home-manager = {
-			url = "github:nix-community/home-manager/release-23.05";
-			inputs.nixpkgs.follows = "nixpkgs";
-		};
+    # links configs to home directory
+    home-manager = {
+      url = "github:nix-community/home-manager/release-23.05";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
-		# system level settings; softwares
-		darwin = {
-			url = "github:lnl7/nix-darwin";
-			inputs.nixpkgs.follows = "nixpkgs";
-		};
-	};
+    # system level settings; softwares
+    darwin = {
+      url = "github:lnl7/nix-darwin";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
-	outputs = inputs: {
-		darwinConfigurations = {
-			
-			mba2020 = inputs.darwin.lib.darwinSystem {
-				system = "aarch64-darwin";
-				pkgs = import inputs.nixpkgs { 
-					system = "aarch64-darwin";
-					config.allowUnfree = true;
-				};
+    # snowfall-lib = {
+    #   url = "github:snowfallorg/lib";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
 
-				modules = [
-					({pkgs, ...}: {
-						# darwin configs
-						programs.zsh.enable = true;
-						environment.shells = [pkgs.bash pkgs.zsh];
-						environment.loginShell = pkgs.zsh;
+    # plusultra = {
+    #   url = "github:jakehamilton/config";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    #   inputs.unstable.follows = "nixpkgs-unstable";
+    # };
+  };
 
-						
-						environment.systemPackages = [
-							pkgs.coreutils
-						];
+  outputs = inputs: {
+    formatter.aarch64-darwin = inputs.nixpkgs.legacyPackages.aarch64-darwin.alejandra;
 
-						system.keyboard.enableKeyMapping = true;
-						system.keyboard.remapCapsLockToEscape = true;
+    darwinConfigurations = {
+      mkDarwin = inputs.darwin.lib.darwinSystem {
+        system = "aarch64-darwin";
+        pkgs = import inputs.nixpkgs {
+          system = "aarch64-darwin";
+          config.allowUnfree = true;
+        };
 
-						system.defaults.dock.autohide = true;
-						system.defaults.NSGlobalDomain.InitialKeyRepeat = 14;
-						system.defaults.NSGlobalDomain.KeyRepeat = 1;	
+        modules = [
+          ({pkgs, ...}: {
+            # darwin configs
+            programs.fish.enable = true;
+            environment.shells = [pkgs.bash pkgs.fish];
+            environment.loginShell = pkgs.fish;
 
-						# Auto upgrade nix package and the daemon service.
-						services.nix-daemon.enable = true;
-					})
+            environment.systemPackages = [
+              pkgs.coreutils
+            ];
 
-					inputs.home-manager.darwinModules.home-manager {
-						users.users.hanz.home = "/Users/hanz";
-						home-manager = {
-							useGlobalPkgs = true;
-							useUserPackages = true;
+            system.keyboard.enableKeyMapping = true;
+            system.keyboard.remapCapsLockToEscape = true;
 
-							users.hanz.imports = [
-								({ pkgs, ... }: {
-									home.username = "hanz";
-									home.homeDirectory = pkgs.lib.mkDefault "/Users/hanz";
+            system.defaults.dock.autohide = true;
+            system.defaults.NSGlobalDomain.InitialKeyRepeat = 14;
+            system.defaults.NSGlobalDomain.KeyRepeat = 1;
 
-									### Don't change this when you change package input. Leave it alone. ###
-									home.stateVersion = "23.05";
-									### --- ###
+            # Auto upgrade nix package and the daemon service.
+            services.nix-daemon.enable = true;
 
-									home.packages = with pkgs; [
-										ripgrep
-										fd
-										curl
-										less
-										du-dust	# du + rust
-										zoxide	# smarter 'cd'
-										tmux
-										neofetch
-										tealdeer # fast tldr
-										iterm2
-										neovim
+            # extra nix configs
+            nix.extraOptions = ''
+              auto-optimise-store = true
+              experimental-features = nix-command flakes
+            '';
+          })
 
-										httpstat
-										curlie
+          inputs.home-manager.darwinModules.home-manager
+          {
+            users.users.hanz.home = "/Users/hanz";
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
 
-										tailscale
-										caddy
+              users.hanz.imports = [
+                ({pkgs, ...}: {
+                  home.username = "hanz";
+                  home.homeDirectory = pkgs.lib.mkDefault "/Users/hanz";
 
-										discord
-										obsidian
-									];
+                  ### Don't change this when you change package input. Leave it alone. ###
+                  home.stateVersion = "23.05";
+                  ### --- ###
 
-									home.sessionVariables = {
-										PAGER = "less";
-										CLICLOLOR = 1;
-										EDITOR = "nvim";
-									};
+                  home.packages = with pkgs; [
+                    ripgrep
+                    fd
+                    curl
+                    less
+                    du-dust # du + rust
+                    neofetch
+                    tealdeer # fast tldr
+                    neovim
 
-									# programs to install
-									programs.bat.enable = true;
-									programs.bat.config.theme = "TwoDark";
-									programs.fzf.enable = true;
-									programs.fzf.enableZshIntegration = true;
-									programs.exa.enable = true;
-									programs.zsh.enable = true;
-									programs.zsh.shellAliases = { ls = "ls --color=auto -F"; };
-									programs.starship.enable = true;
-									programs.starship.enableZshIntegration = true;
+                    httpstat
+                    curlie
 
-									# Let Home Manager install and manage itself.
-									programs.home-manager.enable = true;
+                    tailscale
+                    caddy
 
-									# configure git
-									programs.git = {
-										enable = true;
-										userName = "Hanz";
-										userEmail = "haniel56@zoho.eu";
+                    ## mac desktop specific apps
+                    iterm2
+                    discord
+                    obsidian
+                    vscode
+                  ];
 
-										extraConfig = {
-											pull.rebase = true;
-											init.defaultBranch = "main";
-											github.user = "fivehanz";
-										};
-									};	
+                  home.sessionVariables = {
+                    PAGER = "less";
+                    CLICLOLOR = 1;
+                    EDITOR = "nvim";
+                  };
 
-									programs.tmux = {
-										enable = true;
-										clock24 = true;
-									};
-								})
-							];
-						};
-					}
-				];
-			};
-		};
-	};
+                  # programs to install
+                  
+                  programs.zoxide = {
+                    enable = true; # smarter 'cd'
+                    enableFishIntegration = true;
+                  };
+                  
+                  programs.bat.enable = true;
+                  # programs.bat.config.theme = "TwoDark";
+                  programs.fzf.enable = true;
+                  programs.fzf.enableFishIntegration = true;
+                  
+                  programs.fish.enable = true;
+                  programs.fish.shellAliases = {
+                    ls = "ls --color=auto -F";
+                    cd = "z";
+                    cat = "bat";
+                  };
+
+                  programs.starship = let
+                    flavour = "mocha"; # One of `latte`, `frappe`, `macchiato`, or `mocha`
+                  in {
+                    enable = true;
+                    enableFishIntegration = true;
+
+                    settings =
+                      {
+                        # Other config here
+                        format = "$all"; # Remove this line to disable the default prompt format
+                        palette = "catppuccin_${flavour}";
+                      }
+                      // builtins.fromTOML (builtins.readFile
+                        (pkgs.fetchFromGitHub
+                          {
+                            owner = "catppuccin";
+                            repo = "starship";
+                            rev = "3e3e54410c3189053f4da7a7043261361a1ed1bc"; # Replace with the latest commit hash
+                            sha256 = "sha256-soEBVlq3ULeiZFAdQYMRFuswIIhI9bclIU8WXjxd7oY=";
+                          }
+                          + /palettes/${flavour}.toml));
+                  };
+
+                  # Let Home Manager install and manage itself.
+                  programs.home-manager.enable = true;
+
+                  # configure git
+                  programs.git = {
+                    enable = true;
+                    userName = "Hanz";
+                    userEmail = "haniel56@zoho.eu";
+
+                    extraConfig = {
+                      pull.rebase = true;
+                      init.defaultBranch = "main";
+                      github.user = "fivehanz";
+                    };
+                  };
+
+                  programs.tmux = {
+                    enable = true;
+                    clock24 = true;
+                  };
+                })
+              ];
+            };
+          }
+        ];
+      };
+    };
+  };
 }
