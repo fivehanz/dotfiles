@@ -55,6 +55,7 @@
 
             environment.systemPackages = [
               pkgs.coreutils
+	      pkgs.rustup
             ];
 
             system.keyboard.enableKeyMapping = true;
