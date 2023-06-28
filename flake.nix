@@ -56,7 +56,10 @@
             environment.systemPackages = [
               pkgs.coreutils
 	      pkgs.rustup
+	      pkgs.tailscale
             ];
+	
+	    services.tailscale.enable = true;
 
             system.keyboard.enableKeyMapping = true;
             system.keyboard.remapCapsLockToEscape = true;
@@ -105,7 +108,6 @@
                     curlie
                     trippy # network diagnostics tool
 
-                    tailscale 
                     caddy # quick web server
 
                     ## mac desktop specific apps
