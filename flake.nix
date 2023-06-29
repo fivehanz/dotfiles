@@ -103,6 +103,8 @@
                     neofetch
                     tealdeer # fast tldr
                     neovim
+		    nodejs-18_x
+		    nodePackages.pnpm
 
                     httpstat
                     curlie
