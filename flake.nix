@@ -57,6 +57,7 @@
               pkgs.coreutils
 	      pkgs.rustup
 	      pkgs.tailscale
+	      pkgs.utm
             ];
 	
 	    services.tailscale.enable = true;
