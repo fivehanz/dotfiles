@@ -58,6 +58,7 @@
               pkgs.rustup
               pkgs.tailscale
               pkgs.utm
+	      pkgs.podman-desktop
             ];
 
             services.tailscale.enable = true;
@@ -188,12 +189,11 @@
                     };
                   };
 
-                  programs.tmux = {
-                    enable = true;
-                    clock24 = true;
-                  };
-
-                  programs.direnv = {
+		  programs.wezterm = {
+			enable = true;
+		  };
+                  
+		  programs.direnv = {
                     enable = true;
                     nix-direnv.enable = true;
                   };
