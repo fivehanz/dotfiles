@@ -188,11 +188,17 @@
                     };
                   };
 
-		  programs.wezterm = {
-			enable = true;
-		  };
-                  
-		  programs.direnv = {
+                  programs.wezterm = {
+                    enable = true;
+                    extraConfig = ''
+                      return {
+                      	color_scheme = "catppuccin-mocha",
+
+                      }
+                    '';
+                  };
+
+                  programs.direnv = {
                     enable = true;
                     nix-direnv.enable = true;
                   };
