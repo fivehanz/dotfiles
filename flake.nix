@@ -55,12 +55,12 @@
 
             environment.systemPackages = [
               pkgs.coreutils
-	      pkgs.rustup
-	      pkgs.tailscale
-	      pkgs.utm
+              pkgs.rustup
+              pkgs.tailscale
+              pkgs.utm
             ];
-	
-	    services.tailscale.enable = true;
+
+            services.tailscale.enable = true;
 
             system.keyboard.enableKeyMapping = true;
             system.keyboard.remapCapsLockToEscape = true;
@@ -104,8 +104,8 @@
                     neofetch
                     tealdeer # fast tldr
                     neovim
-		    nodejs-18_x
-		    nodePackages.pnpm
+                    nodejs-18_x
+                    nodePackages.pnpm
 
                     httpstat
                     curlie
@@ -191,6 +191,11 @@
                   programs.tmux = {
                     enable = true;
                     clock24 = true;
+                  };
+
+                  programs.direnv = {
+                    enable = true;
+                    nix-direnv.enable = true;
                   };
                 })
               ];
