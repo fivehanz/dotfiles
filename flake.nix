@@ -58,7 +58,6 @@
               pkgs.rustup
               pkgs.tailscale
               pkgs.utm
-	      pkgs.podman-desktop
             ];
 
             services.tailscale.enable = true;
