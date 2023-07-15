@@ -187,6 +187,10 @@
                     userName = "Hanz";
                     userEmail = "haniel56@zoho.eu";
 
+                    ignores = [
+                      ".direnv"
+                    ];
+
                     extraConfig = {
                       pull.rebase = true;
                       init.defaultBranch = "main";
@@ -197,12 +201,17 @@
                   programs.wezterm = {
                     enable = true;
                     extraConfig = ''
-                                         return {
-                                         	color_scheme = "catppuccin-mocha",
-                      window_background_opacity = 0.85,
-                      macos_window_background_blur = 20,
-                                         }
+                      return {
+                        color_scheme = 'tokyonight',
+                        window_background_opacity = 0.90,
+                        macos_window_background_blur = 20,
+                      }
                     '';
+                  };
+
+                  programs.zellij = {
+                    enable = true;
+                    enableFishIntegration = true;
                   };
 
                   programs.direnv = {
