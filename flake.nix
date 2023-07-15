@@ -153,6 +153,7 @@
                   programs.fish.enable = true;
                   programs.fish.shellAliases = {
                     cd = "z";
+		    zj = "zellij";
                     b = "bat";
                     vim = "nvim";
                   };
