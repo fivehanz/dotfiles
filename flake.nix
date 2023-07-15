@@ -103,7 +103,7 @@
                     du-dust # du + rust
                     neofetch
                     htop
-                    gitui
+                    lazygit
                     tealdeer # fast tldr
 
                     nodejs-18_x
@@ -153,7 +153,7 @@
                   programs.fish.enable = true;
                   programs.fish.shellAliases = {
                     cd = "z";
-		    zj = "zellij";
+                    zj = "zellij";
                     b = "bat";
                     vim = "nvim";
                   };
