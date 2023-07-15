@@ -127,6 +127,7 @@
                     PAGER = "less";
                     CLICLOLOR = 1;
                     EDITOR = "nvim";
+                    ZELLIJ_AUTO_EXIT = "true";
                   };
 
                   # programs to install
@@ -153,6 +154,7 @@
                   programs.fish.shellAliases = {
                     cd = "z";
                     b = "bat";
+                    vim = "nvim";
                   };
 
                   programs.starship = let
