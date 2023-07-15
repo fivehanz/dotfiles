@@ -127,7 +127,7 @@
                     PAGER = "less";
                     CLICLOLOR = 1;
                     EDITOR = "nvim";
-                    ZELLIJ_AUTO_EXIT = "true";
+                    # ZELLIJ_AUTO_EXIT = "true";
                   };
 
                   # programs to install
