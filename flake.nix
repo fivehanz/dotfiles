@@ -102,7 +102,10 @@
                     less
                     du-dust # du + rust
                     neofetch
+                    htop
+                    gitui
                     tealdeer # fast tldr
+
                     nodejs-18_x
                     nodePackages.pnpm
 
@@ -110,10 +113,7 @@
                     curlie
                     trippy # network diagnostics tool
 
-                    caddy # quick web server
-
                     ## mac desktop specific apps
-                    #iterm2
                     discord
                     obsidian
                     vscode
