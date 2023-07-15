@@ -154,8 +154,8 @@
                   programs.fish.shellAliases = {
                     cd = "z";
                     zj = "zellij";
-		    lg = "lazygit";
-		    gs = "git status -s";
+                    lg = "lazygit";
+                    gs = "git status -s";
                     b = "bat";
                     n = "nvim";
                   };
