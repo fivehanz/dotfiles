@@ -114,14 +114,14 @@
                     caddy # quick web server
 
                     ## mac desktop specific apps
-                    iterm2
+                    #iterm2
                     discord
                     obsidian
                     vscode
                     raycast
                     # inputs.nixpkgs-unstable.legacyPackages.aarch64-darwin.calibre
                     # calibre
-                    # amethyst -- not available on nix, use homebrew instead
+                    # amethyst # -- not available on nix, use homebrew instead
                   ];
 
                   home.sessionVariables = {
@@ -138,15 +138,15 @@
                   };
 
                   programs.bat.enable = true;
-                  # programs.bat.config.theme = "TwoDark";
                   programs.fzf.enable = true;
                   programs.fzf.enableFishIntegration = true;
+		  programs.lsd.enable = true;
+                  programs.lsd.enableAliases = true;
 
                   programs.fish.enable = true;
                   programs.fish.shellAliases = {
-                    ls = "ls --color=auto -F";
                     cd = "z";
-                    cat = "bat";
+                    b = "bat";
                   };
 
                   programs.starship = let
