@@ -103,7 +103,6 @@
                     du-dust # du + rust
                     neofetch
                     tealdeer # fast tldr
-                    neovim
                     nodejs-18_x
                     nodePackages.pnpm
 
@@ -132,6 +131,13 @@
 
                   # programs to install
 
+                  programs.neovim = {
+                    enable = true;
+                    viAlias = true;
+                    vimAlias = true;
+                    extraPackages = with pkgs; [gcc];
+                  };
+
                   programs.zoxide = {
                     enable = true; # smarter 'cd'
                     enableFishIntegration = true;
@@ -140,7 +146,7 @@
                   programs.bat.enable = true;
                   programs.fzf.enable = true;
                   programs.fzf.enableFishIntegration = true;
-		  programs.lsd.enable = true;
+                  programs.lsd.enable = true;
                   programs.lsd.enableAliases = true;
 
                   programs.fish.enable = true;
@@ -191,11 +197,11 @@
                   programs.wezterm = {
                     enable = true;
                     extraConfig = ''
-                      return {
-                      	color_scheme = "catppuccin-mocha",
-			window_background_opacity = 0.85,
-			macos_window_background_blur = 20,
-                      }
+                                         return {
+                                         	color_scheme = "catppuccin-mocha",
+                      window_background_opacity = 0.85,
+                      macos_window_background_blur = 20,
+                                         }
                     '';
                   };
 
