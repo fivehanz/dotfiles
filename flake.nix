@@ -57,8 +57,13 @@
               pkgs.coreutils
               pkgs.rustup
               pkgs.tailscale
+              
+              ## running containers on apple silicon
               pkgs.colima
-              pkgs.utm
+              pkgs.docker-client
+              ##
+              
+              # pkgs.utm
             ];
 
             services.tailscale.enable = true;
