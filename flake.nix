@@ -57,6 +57,7 @@
               pkgs.coreutils
               pkgs.rustup
               pkgs.tailscale
+              pkgs.colima
               pkgs.utm
             ];
 
@@ -158,6 +159,7 @@
                     gs = "git status -s";
                     b = "bat";
                     n = "nvim";
+                    vim = "nvim";
                   };
 
                   programs.starship = let
