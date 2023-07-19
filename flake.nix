@@ -106,7 +106,7 @@
                     fd
                     curl
                     less
-                    du-dust # du + rust
+                    ncdu
                     neofetch
                     htop
                     lazygit
