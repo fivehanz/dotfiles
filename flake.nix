@@ -109,6 +109,7 @@
                     ncdu
                     neofetch
                     htop
+                    gh
                     lazygit
                     tealdeer # fast tldr
 
