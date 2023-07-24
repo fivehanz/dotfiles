@@ -79,6 +79,7 @@
             services.nix-daemon.enable = true;
 
             # extra nix configs
+            nix.settings.auto-optimise-store = true;
             nix.extraOptions = ''
               auto-optimise-store = true
               experimental-features = nix-command flakes
