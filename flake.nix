@@ -57,12 +57,12 @@
               pkgs.coreutils
               pkgs.rustup
               pkgs.tailscale
-              
+
               ## running containers on apple silicon
               pkgs.colima
               pkgs.docker-client
               ##
-              
+
               # pkgs.utm
             ];
 
@@ -224,6 +224,9 @@
                   programs.zellij = {
                     enable = true;
                     enableFishIntegration = true;
+                    settings = {
+                      simplified_ui = true;
+                    };
                   };
 
                   programs.direnv = {
