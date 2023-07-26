@@ -120,6 +120,8 @@
                     httpstat
                     curlie
                     trippy # network diagnostics tool
+                    lens # k8s ide
+                    k9s # cli k8s ide
 
                     ## mac desktop specific apps
                     discord
