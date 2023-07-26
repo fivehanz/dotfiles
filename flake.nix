@@ -122,6 +122,7 @@
                     trippy # network diagnostics tool
                     lens # k8s ide
                     k9s # cli k8s ide
+                    kubectl
 
                     ## mac desktop specific apps
                     discord
@@ -169,6 +170,7 @@
                     b = "bat";
                     n = "nvim";
                     vim = "nvim";
+                    curl = "curlie";
                   };
 
                   programs.starship = let
