@@ -113,6 +113,7 @@
                     gh
                     lazygit
                     tealdeer # fast tldr
+                    alejandra # nix formatter
 
                     nodejs-18_x
                     nodePackages.pnpm
