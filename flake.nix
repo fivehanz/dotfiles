@@ -130,6 +130,9 @@
                     obsidian
                     vscode
                     raycast
+                    qbittorrent
+                    mpv-unwrapped
+
                     # inputs.nixpkgs-unstable.legacyPackages.aarch64-darwin.calibre
                     # calibre
                     # amethyst # -- not available on nix, use homebrew instead
