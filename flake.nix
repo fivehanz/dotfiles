@@ -114,6 +114,7 @@
                     lazygit
                     tealdeer # fast tldr
                     alejandra # nix formatter
+                    zld # fast apple linker
 
                     nodejs-18_x
                     nodePackages.pnpm
@@ -132,7 +133,7 @@
                     raycast
                     qbittorrent
                     mpv-unwrapped
-
+  
                     # inputs.nixpkgs-unstable.legacyPackages.aarch64-darwin.calibre
                     # calibre
                     # amethyst # -- not available on nix, use homebrew instead
