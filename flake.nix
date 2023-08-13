@@ -114,7 +114,7 @@
                     lazygit
                     tealdeer # fast tldr
                     alejandra # nix formatter
-                    zld # fast apple linker
+                    lld_16 # fast apple linker
 
                     nodejs-18_x
                     nodePackages.pnpm
