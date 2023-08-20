@@ -115,7 +115,7 @@
                     tealdeer # fast tldr
                     alejandra # nix formatter
                     lld_16 # fast apple linker
-
+                    protobuf # protobuf compiler
                     nodejs-18_x
                     nodePackages.pnpm
 
