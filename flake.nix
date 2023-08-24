@@ -25,14 +25,16 @@
   };
 
   outputs = inputs: let
-    pkgsFor = system: import inputs.nixpkgs {inherit system;};
+    pkgsFor = system:
+      import inputs.nixpkgs {
+        inherit system;
+        config.allowUnfree = true;
+      };
 
     # linux configs
     mkLinux = system:
       pkgsFor system.lib.nixosSystem {
         inherit system;
-        config.allowUnfree = true;
-
         modules = [
           inputs.home-manager.nixosModules.home-manager
           {
