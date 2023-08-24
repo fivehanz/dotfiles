@@ -24,7 +24,9 @@
     };
   };
 
-  outputs = inputs: {
+  outputs = inputs: let
+    pkgsFor = system: import inputs.nixpkgs {inherit system;};
+  in {
     formatter.aarch64-darwin = inputs.nixpkgs.legacyPackages.aarch64-darwin.alejandra;
     formatter.x86_64-linux = inputs.nixpkgs.legacyPackages.aarch64-darwin.alejandra;
     formatter.aarch64-linux = inputs.nixpkgs.legacyPackages.aarch64-darwin.alejandra;
@@ -245,7 +247,7 @@
 
     linuxConfigurations = {
       mkLinuxVM = inputs.nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
+        inherit (pkgsFor "x86_64-linux") system;
 
         pkgs = import inputs.nixpkgs {
           system = "x86_64-linux";
