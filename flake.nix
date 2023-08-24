@@ -1,7 +1,7 @@
 ####
 ## nix build .#darwinConfigurations.mkDarwin.system
 ## ./result/sw/bin/darwin-rebuild switch --flake ~/Projects/dotfiles#mkDarwin
-## darwin-rebuild switch --flake ~/Projects/dotfiles#mkDarwin
+## darwin-rebuild switch --flake .#mkDarwin
 ####
 {
   description = "root & home-manager nix flake";
@@ -23,16 +23,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # snowfall-lib = {
-    #   url = "github:snowfallorg/lib";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
-
-    # plusultra = {
-    #   url = "github:jakehamilton/config";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    #   inputs.unstable.follows = "nixpkgs-unstable";
-    # };
   };
 
   outputs = inputs: {
