@@ -403,6 +403,8 @@
       };
     };
 
+    stdenv = inputs.nixpkgs.pkgs.stdenv;
+
     linuxConfigurations = {
       mkLinuxVM = mkLinux "x86_64-linux";
       mkLinuxVM-aarch64 = mkLinux "aarch64-linux";
