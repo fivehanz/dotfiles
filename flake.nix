@@ -34,6 +34,7 @@
     # linux configs
     mkLinux = system:
       pkgsFor system.lib.nixosSystem {
+        stdenv = inputs.nixpkgs.pkgs.stdenv;
         inherit system;
         modules = [
           inputs.home-manager.nixosModules.home-manager
@@ -402,8 +403,6 @@
         ];
       };
     };
-
-    stdenv = inputs.nixpkgs.pkgs.stdenv;
 
     linuxConfigurations = {
       mkLinuxVM = mkLinux "x86_64-linux";
