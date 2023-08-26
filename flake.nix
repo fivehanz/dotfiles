@@ -157,16 +157,19 @@
                   programs.lsd.enable = true;
                   programs.lsd.enableAliases = true;
 
-                  programs.fish.enable = true;
-                  programs.fish.shellAliases = {
-                    cd = "z";
-                    zj = "zellij";
-                    lg = "lazygit";
-                    gs = "git status -s";
-                    b = "bat";
-                    n = "nvim";
-                    vim = "nvim";
-                    curl = "curlie";
+                  programs.fish = {
+                    enable = true;
+                    shellAliases = {
+                      cd = "z";
+                      zj = "zellij";
+                      lg = "lazygit";
+                      gs = "git status -s";
+                      b = "bat";
+                      n = "nvim";
+                      vim = "nvim";
+                      curl = "curlie";
+                    };
+                    shellInit = "rtx activate fish | source";
                   };
 
                   programs.starship = let
