@@ -41,17 +41,38 @@
             environment.shells = [pkgs.bash pkgs.fish];
             environment.loginShell = pkgs.fish;
 
-            environment.systemPackages = [
-              pkgs.coreutils
-              pkgs.rustup
-              pkgs.tailscale
+            environment.systemPackages = with pkgs; [
+              coreutils
+              rustup
+              tailscale
 
               ## running containers on apple silicon
-              pkgs.colima
-              pkgs.docker-client
+              colima
+              docker-client
               ##
 
-              # pkgs.utm
+              ripgrep
+              fd
+              curl
+              less
+              ncdu
+              neofetch
+              htop
+              gh
+              lazygit
+              tealdeer # fast tldr
+              alejandra # nix formatter
+              lld_16 # fast apple linker
+              protobuf # protobuf compiler
+              nodejs-18_x
+              nodePackages.pnpm
+
+              httpstat
+              curlie
+              trippy # network diagnostics tool
+              k9s # cli k8s ide
+              kubectl
+              rtx
             ];
 
             services.tailscale.enable = true;
@@ -91,29 +112,6 @@
                   ### --- ###
 
                   home.packages = with pkgs; [
-                    ripgrep
-                    fd
-                    curl
-                    less
-                    ncdu
-                    neofetch
-                    htop
-                    gh
-                    lazygit
-                    tealdeer # fast tldr
-                    alejandra # nix formatter
-                    lld_16 # fast apple linker
-                    protobuf # protobuf compiler
-                    nodejs-18_x
-                    nodePackages.pnpm
-
-                    httpstat
-                    curlie
-                    trippy # network diagnostics tool
-                    lens # k8s ide
-                    k9s # cli k8s ide
-                    kubectl
-
                     ## mac desktop specific apps
                     discord
                     obsidian
@@ -121,7 +119,7 @@
                     raycast
                     qbittorrent
                     mpv-unwrapped
-
+                    lens # k8s ide
                     # inputs.nixpkgs-unstable.legacyPackages.aarch64-darwin.calibre
                     # calibre
                     # amethyst # -- not available on nix, use homebrew instead
@@ -136,10 +134,10 @@
 
                   # programs to install
 
-                  programs.rtx = {
-                    enable = true;
-                    enableFishIntegration = true;
-                  };
+                  # programs.rtx = {
+                  # enable = true;
+                  # enableFishIntegration = true;
+                  # };
 
                   programs.neovim = {
                     enable = true;
