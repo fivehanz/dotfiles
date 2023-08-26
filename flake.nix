@@ -136,6 +136,11 @@
 
                   # programs to install
 
+                  programs.rtx = {
+                    enable = true;
+                    enableFishIntegration = true;
+                  };
+
                   programs.neovim = {
                     enable = true;
                     viAlias = true;
