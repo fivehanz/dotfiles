@@ -73,6 +73,7 @@
               k9s # cli k8s ide
               kubectl
               rtx
+              utm
             ];
 
             services.tailscale.enable = true;
