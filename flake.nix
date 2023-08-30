@@ -74,6 +74,7 @@
               kubectl
               rtx
               utm
+              inputs.nixpkgs-unstable.legacyPackages.aarch64-darwin.erlang_26
             ];
 
             services.tailscale.enable = true;
