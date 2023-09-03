@@ -44,6 +44,11 @@
             environment.systemPackages = with pkgs; [
               coreutils
               rustup
+              bacon
+              inputs.nixpkgs-unstable.legacyPackages.aarch64-darwin.dysk
+              ripgrep
+              rtx
+              sccache # cache
               tailscale
 
               ## running containers on apple silicon
@@ -51,7 +56,6 @@
               docker-client
               ##
 
-              ripgrep
               fd
               curl
               less
@@ -72,7 +76,6 @@
               trippy # network diagnostics tool
               k9s # cli k8s ide
               kubectl
-              rtx
               utm
               inputs.nixpkgs-unstable.legacyPackages.aarch64-darwin.erlang_26
             ];
@@ -166,10 +169,11 @@
                       zj = "zellij";
                       lg = "lazygit";
                       gs = "git status -s";
-                      b = "bat";
+                      cat = "bat";
                       n = "nvim";
                       vim = "nvim";
                       curl = "curlie";
+                      df = "dysk";
                     };
                     shellInit = "rtx activate fish | source";
                   };
