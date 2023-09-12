@@ -45,7 +45,6 @@
               coreutils
               rustup
               bacon
-              inputs.nixpkgs-unstable.legacyPackages.aarch64-darwin.dysk
               ripgrep
               rtx
               sccache # cache
@@ -71,7 +70,7 @@
               nodejs-18_x
               nodePackages.pnpm
 
-              httpstat
+              glow # markdown reader
               curlie
               trippy # network diagnostics tool
               k9s # cli k8s ide
