@@ -77,6 +77,7 @@
               kubectl
               utm
               inputs.nixpkgs-unstable.legacyPackages.aarch64-darwin.erlang_26
+              inputs.nixpkgs-unstable.legacyPackages.aarch64-darwin.sqld
             ];
 
             services.tailscale.enable = true;
