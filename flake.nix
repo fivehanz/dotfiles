@@ -49,6 +49,7 @@
               rtx
               sccache # cache
               tailscale
+              ansible
 
               ## running containers on apple silicon
               colima
