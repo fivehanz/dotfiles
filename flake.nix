@@ -69,6 +69,7 @@
               protobuf # protobuf compiler
               nodejs-18_x
               nodePackages.pnpm
+              python3
 
               glow # markdown reader
               curlie
