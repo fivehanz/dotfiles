@@ -79,7 +79,8 @@
               utm
               inputs.nixpkgs-unstable.legacyPackages.aarch64-darwin.erlang_26
               inputs.nixpkgs-unstable.legacyPackages.aarch64-darwin.sqld
-              flyctl #flyctl 
+              inputs.nixpkgs-unstable.legacyPackages.aarch64-darwin.obsidian
+              flyctl #flyctl
             ];
 
             services.tailscale.enable = true;
@@ -121,7 +122,6 @@
                   home.packages = with pkgs; [
                     ## mac desktop specific apps
                     discord
-                    obsidian
                     vscode
                     raycast
                     qbittorrent
