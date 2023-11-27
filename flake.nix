@@ -46,7 +46,7 @@
               rustup
               bacon
               ripgrep
-              rtx
+              inputs.nixpkgs-unstable.legacyPackages.aarch64-darwin.rtx
               sccache # cache
               tailscale
               ansible
@@ -66,7 +66,9 @@
               lazygit
               tealdeer # fast tldr
               alejandra # nix formatter
+              
               lld_16 # fast apple linker
+
               protobuf # protobuf compiler
               nodejs-18_x
               nodePackages.pnpm
@@ -77,7 +79,7 @@
               k9s # cli k8s ide
               kubectl
               utm
-              inputs.nixpkgs-unstable.legacyPackages.aarch64-darwin.erlang_26
+              # inputs.nixpkgs-unstable.legacyPackages.aarch64-darwin.erlang_26
               inputs.nixpkgs-unstable.legacyPackages.aarch64-darwin.sqld
               inputs.nixpkgs-unstable.legacyPackages.aarch64-darwin.obsidian
               flyctl #flyctl
@@ -177,7 +179,10 @@
                       curl = "curlie";
                       df = "dysk";
                     };
-                    shellInit = "rtx activate fish | source";
+                    shellInit = ''
+                      rtx activate fish | source
+                      eval "$(/opt/homebrew/bin/brew shellenv)"
+                      '';
                   };
 
                   programs.starship = let
