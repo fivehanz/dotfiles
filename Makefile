@@ -4,6 +4,9 @@ default:
 fallback:
 	NIXPKGS_ALLOW_UNFREE=1 darwin-rebuild switch --flake .#mkDarwin --impure --fallback
 
+build:
+	env NIXPKGS_ALLOW_UNFREE=1 nix build .#darwinConfigurations.mkDarwin.system --impure
+
 repair:
 	sudo nix-store --verify --check-contents --repair
 
