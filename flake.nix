@@ -69,16 +69,19 @@
               
               lld_16 # fast apple linker
 
-              protobuf # protobuf compiler
+              # protobuf # protobuf compiler
               nodejs-18_x
               nodePackages.pnpm
 
               glow # markdown reader
               curlie
               trippy # network diagnostics tool
-              k9s # cli k8s ide
-              kubectl
-              utm
+              # k9s # cli k8s ide
+              # kubectl
+              # utm
+              discord
+              vscode
+              raycast
               # inputs.nixpkgs-unstable.legacyPackages.aarch64-darwin.erlang_26
               inputs.nixpkgs-unstable.legacyPackages.aarch64-darwin.sqld
               inputs.nixpkgs-unstable.legacyPackages.aarch64-darwin.obsidian
@@ -123,12 +126,9 @@
 
                   home.packages = with pkgs; [
                     ## mac desktop specific apps
-                    discord
-                    vscode
-                    raycast
                     qbittorrent
                     mpv-unwrapped
-                    lens # k8s ide
+                    # lens # k8s ide
                     # inputs.nixpkgs-unstable.legacyPackages.aarch64-darwin.calibre
                     # calibre
                     # amethyst # -- not available on nix, use homebrew instead
