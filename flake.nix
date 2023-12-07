@@ -8,18 +8,19 @@
 
   inputs = {
     # nixpkgs url
-    nixpkgs.url = "github:nixos/nixpkgs/release-23.11";
+    # nixpkgs.url = "github:nixos/nixpkgs/release-23.11";
+    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
 
     # links configs to home directory
     home-manager = {
-      url = "github:nix-community/home-manager/release-23.11";
+      url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     # system level settings; softwares
     darwin = {
-      url = "github:lnl7/nix-darwin";
+      url = "github:lnl7/nix-darwin/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -46,7 +47,6 @@
               rustup
               bacon
               ripgrep
-              inputs.nixpkgs-unstable.legacyPackages.aarch64-darwin.rtx
               sccache # cache
               tailscale
               ansible
@@ -79,12 +79,15 @@
               # k9s # cli k8s ide
               # kubectl
               # utm
+              
+
+              rtx
               discord
               vscode
               raycast
               # inputs.nixpkgs-unstable.legacyPackages.aarch64-darwin.erlang_26
-              inputs.nixpkgs-unstable.legacyPackages.aarch64-darwin.sqld
-              inputs.nixpkgs-unstable.legacyPackages.aarch64-darwin.obsidian
+              sqld
+              obsidian
               flyctl #flyctl
             ];
 
@@ -152,7 +155,7 @@
                     enable = true;
                     viAlias = true;
                     vimAlias = true;
-                    extraPackages = with pkgs; [gcc];
+                    # extraPackages = with pkgs; [gcc];
                   };
 
                   programs.zoxide = {
