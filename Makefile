@@ -34,3 +34,6 @@ fix-channel:
 
 gc: 
 	NIXPKGS_ALLOW_UNFREE=1 nix store gc
+
+fix-ownership:
+	sudo chown -R $USER:staff /nix
