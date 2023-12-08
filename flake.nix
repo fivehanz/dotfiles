@@ -73,6 +73,8 @@
               nodejs-18_x
               nodePackages.pnpm
 
+              R  # R programming language
+
               glow # markdown reader
               curlie
               trippy # network diagnostics tool
