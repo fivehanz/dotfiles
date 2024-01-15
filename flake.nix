@@ -66,7 +66,11 @@
               lazygit
               tealdeer # fast tldr
               alejandra # nix formatter
-              
+              xh
+              ripsecrets
+              broot
+
+
               lld_16 # fast apple linker
 
               # protobuf # protobuf compiler
@@ -76,8 +80,6 @@
               R  # R programming language
 
               glow # markdown reader
-              curlie
-              trippy # network diagnostics tool
               # k9s # cli k8s ide
               # kubectl
               # utm
@@ -181,8 +183,6 @@
                       cat = "bat";
                       n = "nvim";
                       vim = "nvim";
-                      curl = "curlie";
-                      df = "dysk";
                     };
                     shellInit = ''
                       rtx activate fish | source
