@@ -246,7 +246,7 @@
 
                   programs.zellij = {
                     enable = true;
-                    enableFishIntegration = true;
+                    # enableFishIntegration = true;
                     settings = {
                       simplified_ui = true;
                     };
