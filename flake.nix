@@ -68,17 +68,10 @@
               alejandra # nix formatter
               xh
               ripsecrets
-              broot
+              atuin
 
 
               lld_16 # fast apple linker
-
-              # protobuf # protobuf compiler
-              nodejs-18_x
-              nodePackages.pnpm
-
-              R  # R programming language
-
               glow # markdown reader
               # k9s # cli k8s ide
               # kubectl
