@@ -32,8 +32,11 @@ fix-channel:
 	nix-channel --add https://nixos.org/channels/nixpkgs-unstable
 	nix-channel --update nixpkgs
 
-gc: 
-	NIXPKGS_ALLOW_UNFREE=1 nix store gc
+gc:
+	nix store gc
+	nix-collect-garbage -d
+	sudo nix-collect-garbage -d
+
 
 fix-ownership:
-	sudo chown -R $(USER):staff /nix
+	chown -R $(USER):staff /nix

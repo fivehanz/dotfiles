@@ -50,6 +50,8 @@
               sccache # cache
               tailscale
               ansible
+              pipx
+
 
               ## running containers on apple silicon
               colima
