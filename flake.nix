@@ -71,6 +71,7 @@
               xh
               ripsecrets
               atuin
+              k6 # load testing tool
 
 
               lld_16 # fast apple linker
