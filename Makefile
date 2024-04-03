@@ -1,6 +1,9 @@
 default:
 	NIXPKGS_ALLOW_UNFREE=1 darwin-rebuild switch --flake .#mkDarwin --impure
 
+update:
+	NIXPKGS_ALLOW_UNFREE=1 nix flake update
+
 fallback:
 	NIXPKGS_ALLOW_UNFREE=1 darwin-rebuild switch --flake .#mkDarwin --impure --fallback
 

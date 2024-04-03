@@ -81,7 +81,7 @@
               # utm
               
 
-              rtx
+              mise # rtx
               discord
               vscode
               raycast
@@ -172,16 +172,17 @@
                   programs.fish = {
                     enable = true;
                     shellAliases = {
-                      cd = "z";
+                      # cd = "z";
                       zj = "zellij";
                       lg = "lazygit";
                       gs = "git status -s";
                       cat = "bat";
                       n = "nvim";
                       vim = "nvim";
+                      rtx = "mise";
                     };
                     shellInit = ''
-                      rtx activate fish | source
+                      mise activate fish | source
                       eval "$(/opt/homebrew/bin/brew shellenv)"
                       '';
                   };
