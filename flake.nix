@@ -183,6 +183,7 @@
                     };
                     shellInit = ''
                       mise activate fish | source
+                      atuin init fish | source
                       eval "$(/opt/homebrew/bin/brew shellenv)"
                       '';
                   };
