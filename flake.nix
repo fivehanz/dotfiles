@@ -8,13 +8,13 @@
 
   inputs = {
     # nixpkgs url
-    # nixpkgs.url = "github:nixos/nixpkgs/release-23.11";
-    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/release-24.05";
+    # nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
 
     # links configs to home directory
     home-manager = {
-      url = "github:nix-community/home-manager/master";
+      url = "github:nix-community/home-manager/release-24.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -88,7 +88,7 @@
               # inputs.nixpkgs-unstable.legacyPackages.aarch64-darwin.erlang_26
               sqld
               obsidian
-              flyctl #flyctl
+              flyctl
             ];
 
             services.tailscale.enable = true;
@@ -135,6 +135,7 @@
                     # inputs.nixpkgs-unstable.legacyPackages.aarch64-darwin.calibre
                     # calibre
                     # amethyst # -- not available on nix, use homebrew instead
+                    ollama
                   ];
 
                   home.sessionVariables = {
