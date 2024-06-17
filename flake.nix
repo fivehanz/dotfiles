@@ -76,6 +76,7 @@
 
               lld_16 # fast apple linker
               glow # markdown reader
+              mods # charm ai llm
               # k9s # cli k8s ide
               # kubectl
               # utm
