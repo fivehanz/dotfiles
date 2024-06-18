@@ -66,6 +66,9 @@
               htop
               gh
               lazygit
+              riffdiff # better diff
+              gfold # git repo management
+              oxker # docker tui
               tealdeer # fast tldr
               alejandra # nix formatter
               xh
