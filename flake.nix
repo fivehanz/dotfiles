@@ -93,6 +93,7 @@
               sqld
               obsidian
               flyctl
+              frankenphp
             ];
 
             services.tailscale.enable = true;
