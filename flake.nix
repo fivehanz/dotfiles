@@ -84,6 +84,10 @@
               # kubectl
               # utm
               
+              protobuf
+              grpcui
+              grpcurl
+
 
               mise # rtx
               discord
