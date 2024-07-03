@@ -92,8 +92,8 @@
               mise # rtx
               discord
               vscode
+              lunarvim
               raycast
-              # inputs.nixpkgs-unstable.legacyPackages.aarch64-darwin.erlang_26
               sqld
               obsidian
               flyctl
@@ -140,7 +140,6 @@
                     ## mac desktop specific apps
                     qbittorrent
                     mpv-unwrapped
-                    # lens # k8s ide
                     # inputs.nixpkgs-unstable.legacyPackages.aarch64-darwin.calibre
                     # calibre
                     # amethyst # -- not available on nix, use homebrew instead
@@ -150,7 +149,7 @@
                     PAGER = "less";
                     CLICLOLOR = 1;
                     EDITOR = "nvim";
-                    # ZELLIJ_AUTO_EXIT = "true";
+                    ZELLIJ_AUTO_EXIT = "true";
                   };
 
                   # programs to install
