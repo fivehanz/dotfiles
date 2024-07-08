@@ -140,6 +140,7 @@
                     ## mac desktop specific apps
                     qbittorrent
                     mpv-unwrapped
+                    iina # video player for macOS
                     # inputs.nixpkgs-unstable.legacyPackages.aarch64-darwin.calibre
                     # calibre
                     # amethyst # -- not available on nix, use homebrew instead
