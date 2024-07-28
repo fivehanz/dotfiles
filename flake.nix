@@ -54,8 +54,8 @@
 
 
               ## running containers on apple silicon
-              colima
-              docker-client
+              # colima
+              # docker-client
               ##
 
               fd
