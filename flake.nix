@@ -88,7 +88,6 @@
               grpcui
               grpcurl
 
-              spyder # python ds ide
               
               mise # rtx
               discord
