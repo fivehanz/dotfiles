@@ -88,16 +88,14 @@
               grpcui
               grpcurl
 
-
+              spyder # python ds ide
+              
               mise # rtx
               discord
               vscode
-              lunarvim
               raycast
-              sqld
               obsidian
               flyctl
-              frankenphp
             ];
 
             services.tailscale.enable = true;
