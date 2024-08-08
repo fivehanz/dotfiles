@@ -61,7 +61,6 @@
               fd
               curl
               less
-              ncdu
               neofetch
               htop
               gh
