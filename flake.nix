@@ -47,11 +47,10 @@
               rustup
               bacon
               ripgrep
-              sccache # cache
               tailscale
               ansible
               pipx
-
+              sniffnet # internet observability
 
               ## running containers on apple silicon
               # colima
