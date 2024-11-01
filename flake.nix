@@ -51,6 +51,7 @@
               ansible
               pipx
               sniffnet # internet observability
+              nghttp2 # http2 tool
 
               ## running containers on apple silicon
               # colima
@@ -96,7 +97,8 @@
             ];
 
             services.tailscale.enable = true;
-
+            
+            system.stateVersion = 5; # don't know why, but it fixes build
             system.keyboard.enableKeyMapping = true;
             system.keyboard.remapCapsLockToEscape = true;
 
