@@ -49,7 +49,8 @@
               ripgrep
               tailscale
               ansible
-              pipx
+              pipx # python pkg 
+              uv # python package manager 
               sniffnet # internet observability
               nghttp2 # http2 tool
 
