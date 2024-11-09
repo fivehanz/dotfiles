@@ -93,8 +93,6 @@
               discord
               vscode
               raycast
-              obsidian
-              flyctl
             ];
 
             services.tailscale.enable = true;
