@@ -45,6 +45,7 @@
             environment.systemPackages = with pkgs; [
               coreutils
               rustup
+              sccache
               bacon
               ripgrep
               tailscale
