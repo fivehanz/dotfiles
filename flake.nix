@@ -8,13 +8,13 @@
 
   inputs = {
     # nixpkgs url
-    nixpkgs.url = "github:nixos/nixpkgs/release-24.05";
+    nixpkgs.url = "github:nixos/nixpkgs/release-24.11";
     # nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
 
     # links configs to home directory
     home-manager = {
-      url = "github:nix-community/home-manager/release-24.05";
+      url = "github:nix-community/home-manager/release-24.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -40,7 +40,6 @@
             # darwin configs
             programs.fish.enable = true;
             environment.shells = [pkgs.bash pkgs.fish];
-            environment.loginShell = pkgs.fish;
 
             environment.systemPackages = with pkgs; [
               coreutils
@@ -110,7 +109,7 @@
             services.nix-daemon.enable = true;
 
             # extra nix configs
-            nix.settings.auto-optimise-store = true;
+            nix.optimise.automatic = true;
             nix.extraOptions = ''
               auto-optimise-store = true
               experimental-features = nix-command flakes
