@@ -29,7 +29,7 @@ optimise:
 	NIXPKGS_ALLOW_UNFREE=1 nix store optimise
 
 doctor:
-	NIXPKGS_ALLOW_UNFREE=1 nix doctor
+	NIXPKGS_ALLOW_UNFREE=1 nix config check
 
 fix-channel:
 	nix-channel --add https://nixos.org/channels/nixpkgs-unstable
