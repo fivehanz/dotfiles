@@ -88,7 +88,7 @@
               grpcui
               grpcurl
 
-              
+              bazelisk # bazel
               mise # rtx
               discord
               vscode
