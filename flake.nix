@@ -47,7 +47,7 @@
               sccache
               bacon
               ripgrep
-              tailscale
+              # tailscale
               ansible
               pipx # python pkg 
               uv # python package manager 
@@ -95,7 +95,7 @@
               raycast
             ];
 
-            services.tailscale.enable = true;
+            # services.tailscale.enable = true;
             
             system.stateVersion = 5; # don't know why, but it fixes build
             system.keyboard.enableKeyMapping = true;
