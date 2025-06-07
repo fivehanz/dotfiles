@@ -49,7 +49,7 @@
               ripgrep
               # tailscale
               ansible
-              pipx # python pkg 
+              # pipx # python pkg 
               uv # python package manager 
               sniffnet # internet observability
               nghttp2 # http2 tool
@@ -87,7 +87,7 @@
               protobuf
               grpcui
               grpcurl
-
+              ncdu 
               bazelisk # bazel
               mise # rtx
               discord
