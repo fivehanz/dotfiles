@@ -8,19 +8,19 @@
 
   inputs = {
     # nixpkgs url
-    nixpkgs.url = "github:nixos/nixpkgs/release-24.11";
+    nixpkgs.url = "github:nixos/nixpkgs/release-25.05";
     # nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
 
     # links configs to home directory
     home-manager = {
-      url = "github:nix-community/home-manager/release-24.11";
+      url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     # system level settings; softwares
     darwin = {
-      url = "github:lnl7/nix-darwin/master";
+      url = "github:lnl7/nix-darwin/nix-darwin-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -105,11 +105,12 @@
             system.defaults.NSGlobalDomain.InitialKeyRepeat = 14;
             system.defaults.NSGlobalDomain.KeyRepeat = 1;
 
-            # Auto upgrade nix package and the daemon service.
-            services.nix-daemon.enable = true;
+	    # system primary user to apply defaults
+	    system.primaryUser = "hanz";
 
-            # extra nix configs
-            nix.optimise.automatic = true;
+            nix.enable = false; # let deterministic nix, handle nix
+	    
+	    # extra nix configs
             nix.extraOptions = ''
               auto-optimise-store = true
               experimental-features = nix-command flakes
@@ -172,7 +173,7 @@
                   programs.fzf.enable = true;
                   programs.fzf.enableFishIntegration = true;
                   programs.lsd.enable = true;
-                  programs.lsd.enableAliases = true;
+                  programs.lsd.enableFishIntegration = true;
 
                   programs.fish = {
                     enable = true;
