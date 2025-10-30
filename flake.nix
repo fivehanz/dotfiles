@@ -43,14 +43,11 @@
 
             environment.systemPackages = with pkgs; [
               coreutils
-              rustup
               sccache
               bacon
               ripgrep
               # tailscale
               ansible
-              # pipx # python pkg 
-              uv # python package manager 
               sniffnet # internet observability
               nghttp2 # http2 tool
 
