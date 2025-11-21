@@ -36,8 +36,8 @@ fix-channel:
 	nix-channel --update nixpkgs
 
 gc:
-	nix store gc
 	nix-collect-garbage -d
+	nix store gc
 	nix-collect-garbage -d
 
 
