@@ -8,19 +8,19 @@
 
   inputs = {
     # nixpkgs url
-    nixpkgs.url = "github:nixos/nixpkgs/release-25.05";
+    nixpkgs.url = "github:nixos/nixpkgs/release-25.11";
     # nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
 
     # links configs to home directory
     home-manager = {
-      url = "github:nix-community/home-manager/release-25.05";
+      url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     # system level settings; softwares
     darwin = {
-      url = "github:lnl7/nix-darwin/nix-darwin-25.05";
+      url = "github:lnl7/nix-darwin/nix-darwin-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -74,17 +74,29 @@
               k6 # load testing tool
 
 
-              lld_16 # fast apple linker
               glow # markdown reader
               # k9s # cli k8s ide
               # kubectl
               utm
               
+              ollama # llm on device
+
               ncdu 
               mise # rtx
               discord
               vscode
             ];
+
+            launchd.user.agents.ollama-serve = {
+              command = "${pkgs.ollama}/bin/ollama serve"; # Path to the ollama executable from nixpkgs
+              serviceConfig = {
+                KeepAlive = true; # Ensures the service restarts if it crashes
+                RunAtLoad = true; # Starts the service when the user logs in
+                # Optional: Define log paths for troubleshooting
+                StandardOutPath = "/tmp/ollama_stdout.log";
+                StandardErrorPath = "/tmp/ollama_stderr.log";
+              };
+            };
 
             # services.tailscale.enable = true;
             
@@ -216,18 +228,16 @@
                   # configure git
                   programs.git = {
                     enable = true;
-                    userName = "Hanz";
-                    userEmail = "haniel56@zoho.eu";
+                    settings.user.name = "Hanz";
+                    settings.user.email = "haniel56@zoho.eu";
 
                     ignores = [
                       ".direnv"
                     ];
-
-                    extraConfig = {
-                      pull.rebase = true;
-                      init.defaultBranch = "main";
-                      github.user = "fivehanz";
-                    };
+ 
+                    settings.pull.rebase = true;
+                    settings.init.defaultBranch = "main";
+                    settings.github.user = "fivehanz"; 
                   };
 
                   programs.wezterm = {
