@@ -61,6 +61,7 @@
     glow
     ncdu
     mise
+    helix
 
     # -- GUI Apps --
     qbittorrent
