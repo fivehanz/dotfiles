@@ -57,8 +57,9 @@
     atuin
     k6
     ncdu
-    mise
+    pkgs.unstable.mise
     helix
+    lazygit
 
     # -- GUI Apps --
     qbittorrent
