@@ -48,7 +48,6 @@
     fd
     curl
     less
-    neofetch
     htop
     gh
     riffdiff
@@ -58,7 +57,7 @@
     k6
     ncdu
     pkgs.unstable.mise
-    helix
+    just
     lazygit
 
     # -- GUI Apps --
