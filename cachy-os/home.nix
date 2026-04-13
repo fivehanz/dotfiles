@@ -72,10 +72,6 @@
 
   # 5. Program Configurations
 
-  programs.emacs = {
-    enable = true;
-  };
-
   programs.neovim = {
     enable = true;
     viAlias = true;
