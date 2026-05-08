@@ -43,63 +43,26 @@
 
             environment.systemPackages = with pkgs; [
               coreutils
-              sccache
-              bacon
               ripgrep
-              # tailscale
               ansible
-              sniffnet # internet observability
-              nghttp2 # http2 tool
-
-              ## running containers on apple silicon
-              # colima
-              # docker-client
-              ##
-
               fd
               curl
               less
-              neofetch
-              htop
-              gh
               lazygit
               riffdiff # better diff
-              gfold # git repo management
-              oxker # docker tui
               tealdeer # fast tldr
               alejandra # nix formatter
               xh
               ripsecrets
               atuin
               k6 # load testing tool
-
-
-              glow # markdown reader
-              # k9s # cli k8s ide
-              # kubectl
+              k9s # cli k8s ide
               utm
-              
-              ollama # llm on device
-
+              pkgs.unstable.mise
               ncdu 
-              mise # rtx
-              discord
-              vscode
             ];
 
-            launchd.user.agents.ollama-serve = {
-              command = "${pkgs.ollama}/bin/ollama serve"; # Path to the ollama executable from nixpkgs
-              serviceConfig = {
-                KeepAlive = true; # Ensures the service restarts if it crashes
-                RunAtLoad = true; # Starts the service when the user logs in
-                # Optional: Define log paths for troubleshooting
-                StandardOutPath = "/tmp/ollama_stdout.log";
-                StandardErrorPath = "/tmp/ollama_stderr.log";
-              };
-            };
 
-            # services.tailscale.enable = true;
-            
             system.stateVersion = 5; # don't know why, but it fixes build
             system.keyboard.enableKeyMapping = true;
             system.keyboard.remapCapsLockToEscape = true;
@@ -108,12 +71,12 @@
             system.defaults.NSGlobalDomain.InitialKeyRepeat = 14;
             system.defaults.NSGlobalDomain.KeyRepeat = 1;
 
-	    # system primary user to apply defaults
-	    system.primaryUser = "hanz";
+	          # system primary user to apply defaults
+	          system.primaryUser = "hanz";
 
             nix.enable = false; # let deterministic nix, handle nix
 	    
-	    # extra nix configs
+	          # extra nix configs
             nix.extraOptions = ''
               auto-optimise-store = true
               experimental-features = nix-command flakes
@@ -137,13 +100,7 @@
                   ### --- ###
 
                   home.packages = with pkgs; [
-                    ## mac desktop specific apps
-                    qbittorrent
-                    mpv-unwrapped
                     iina # video player for macOS
-                    # inputs.nixpkgs-unstable.legacyPackages.aarch64-darwin.calibre
-                    # calibre
-                    # amethyst # -- not available on nix, use homebrew instead
                   ];
 
                   home.sessionVariables = {
@@ -152,13 +109,6 @@
                     EDITOR = "nvim";
                     ZELLIJ_AUTO_EXIT = "true";
                   };
-
-                  # programs to install
-
-                  # programs.rtx = {
-                  # enable = true;
-                  # enableFishIntegration = true;
-                  # };
 
                   programs.neovim = {
                     enable = true;
@@ -181,22 +131,25 @@
                   programs.fish = {
                     enable = true;
                     shellAliases = {
-                      # cd = "z";
                       zj = "zellij";
                       lg = "lazygit";
                       gs = "git status -s";
+                      gcom = "git commit";
+                      gpush = "git push";
+                      gpull = "git pull";
+                      glog = "git log";
+                      gdiff = "git diff";
                       cat = "bat";
                       n = "nvim";
                       vim = "nvim";
-                      rtx = "mise";
                     };
                     shellInit = ''
                       mise activate fish | source
                       atuin init fish | source
                       if test -x /opt/homebrew/bin/brew
-			eval "$(/opt/homebrew/bin/brew shellenv)"
-		      end
-                      '';
+			                  eval "$(/opt/homebrew/bin/brew shellenv)"
+		                  end
+                    '';
                   };
 
                   programs.starship = let
