@@ -58,7 +58,7 @@
               k6 # load testing tool
               k9s # cli k8s ide
               utm
-              pkgs.unstable.mise
+              mise
               ncdu 
             ];
 
@@ -147,8 +147,8 @@
                       mise activate fish | source
                       atuin init fish | source
                       if test -x /opt/homebrew/bin/brew
-			                  eval "$(/opt/homebrew/bin/brew shellenv)"
-		                  end
+                        eval "$(/opt/homebrew/bin/brew shellenv)"
+                      end
                     '';
                   };
 
