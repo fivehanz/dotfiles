@@ -193,16 +193,6 @@
                     settings.github.user = "fivehanz"; 
                   };
 
-                  programs.wezterm = {
-                    enable = true;
-                    extraConfig = ''
-                      return {
-                        color_scheme = 'tokyonight',
-                        window_background_opacity = 0.90,
-                        macos_window_background_blur = 20,
-                      }
-                    '';
-                  };
 
                   programs.zellij = {
                     enable = true;
