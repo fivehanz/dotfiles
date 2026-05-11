@@ -36,63 +36,68 @@
         };
 
         modules = [
-          ({pkgs, ...}: {
-            # darwin configs
-            programs.fish.enable = true;
-            environment.shells = [pkgs.bash pkgs.fish];
+          (
+            { pkgs, ... }:
+            {
+              # darwin configs
+              programs.fish.enable = true;
+              environment.shells = [
+                pkgs.bash
+                pkgs.fish
+              ];
 
-            environment.systemPackages = with pkgs; [
-              coreutils
-              ripgrep
-              ansible
-              fd
-              curl
-              less
-              lazygit
-              riffdiff # better diff
-              tealdeer # fast tldr
-              alejandra # nix formatter
-              xh
-              ripsecrets
-              atuin
-              k6 # load testing tool
-              k9s # cli k8s ide
-              utm
-              mise
-              ncdu
+              environment.systemPackages = with pkgs; [
+                coreutils
+                ripgrep
+                ansible
+                fd
+                curl
+                less
+                lazygit
+                riffdiff # better diff
+                tealdeer # fast tldr
+                alejandra # nix formatter
+                xh
+                ripsecrets
+                atuin
+                k6 # load testing tool
+                k9s # cli k8s ide
+                utm
+                mise
+                ncdu
 
-	      # doom emacs
-	      nixfmt
-	      shfmt
-	      dockfmt
-	      gomodifytags
-	      gotests
-	      gore
-	      black
-	      isort
-	      pipenv
-            ];
+                # doom emacs
+                nixfmt
+                shfmt
+                dockfmt
+                gomodifytags
+                gotests
+                gore
+                black
+                isort
+                pipenv
+              ];
 
+              system.stateVersion = 5; # don't know why, but it fixes build
+              system.keyboard.enableKeyMapping = true;
+              system.keyboard.remapCapsLockToEscape = true;
 
-            system.stateVersion = 5; # don't know why, but it fixes build
-            system.keyboard.enableKeyMapping = true;
-            system.keyboard.remapCapsLockToEscape = true;
+              system.defaults.dock.autohide = true;
+              system.defaults.NSGlobalDomain.InitialKeyRepeat = 14;
+              system.defaults.NSGlobalDomain.KeyRepeat = 1;
 
-            system.defaults.dock.autohide = true;
-            system.defaults.NSGlobalDomain.InitialKeyRepeat = 14;
-            system.defaults.NSGlobalDomain.KeyRepeat = 1;
+              # system primary user to apply defaults
+              system.primaryUser = "hanz";
 
-	          # system primary user to apply defaults
-	          system.primaryUser = "hanz";
+              nix.enable = false; # let deterministic nix, handle nix
 
-            nix.enable = false; # let deterministic nix, handle nix
-	    
-	          # extra nix configs
-            nix.extraOptions = ''
-              auto-optimise-store = true
-              experimental-features = nix-command flakes
-            '';
-          })
+              # extra nix configs
+              nix.extraOptions = ''
+                auto-optimise-store = true
+                experimental-features = nix-command flakes
+              '';
+            }
+          )
 
           inputs.home-manager.darwinModules.home-manager
           {
@@ -102,122 +107,127 @@
               useUserPackages = true;
 
               users.hanz.imports = [
-                ({pkgs, ...}: {
-                  home.username = "hanz";
-                  home.homeDirectory = pkgs.lib.mkDefault "/Users/hanz";
+                (
+                  { pkgs, ... }:
+                  {
+                    home.username = "hanz";
+                    home.homeDirectory = pkgs.lib.mkDefault "/Users/hanz";
 
-                  ### Don't change this when you change package input. Leave it alone. ###
-                  home.stateVersion = "23.05";
-                  ### --- ###
+                    ### Don't change this when you change package input. Leave it alone. ###
+                    home.stateVersion = "23.05";
+                    ### --- ###
 
-                  home.packages = with pkgs; [
-                    iina # video player for macOS
-                  ];
-
-                  home.sessionVariables = {
-                    PAGER = "less";
-                    CLICLOLOR = 1;
-                    EDITOR = "nvim";
-                    ZELLIJ_AUTO_EXIT = "true";
-                  };
-
-                  programs.neovim = {
-                    enable = true;
-                    viAlias = true;
-                    vimAlias = true;
-                    # extraPackages = with pkgs; [gcc];
-                  };
-
-                  programs.zoxide = {
-                    enable = true; # smarter 'cd'
-                    enableFishIntegration = true;
-                  };
-
-                  programs.bat.enable = true;
-                  programs.fzf.enable = true;
-                  programs.fzf.enableFishIntegration = true;
-                  programs.lsd.enable = true;
-                  programs.lsd.enableFishIntegration = true;
-
-                  programs.fish = {
-                    enable = true;
-                    shellAliases = {
-                      zj = "zellij";
-                      lg = "lazygit";
-                      gs = "git status -s";
-                      gcom = "git commit";
-                      gpush = "git push";
-                      gpull = "git pull";
-                      glog = "git log";
-                      gdiff = "git diff";
-                      cat = "bat";
-                      n = "nvim";
-                      vim = "nvim";
-                    };
-                    shellInit = ''
-                      mise activate fish | source
-                      atuin init fish | source
-                      if test -x /opt/homebrew/bin/brew
-                        eval "$(/opt/homebrew/bin/brew shellenv)"
-                      end
-                    '';
-                  };
-
-                  programs.starship = let
-                    flavour = "mocha"; # One of `latte`, `frappe`, `macchiato`, or `mocha`
-                  in {
-                    enable = true;
-                    enableFishIntegration = true;
-
-                    settings =
-                      {
-                        # Other config here
-                        format = "$all"; # Remove this line to disable the default prompt format
-                        palette = "catppuccin_${flavour}";
-                      }
-                      // builtins.fromTOML (builtins.readFile
-                        (pkgs.fetchFromGitHub
-                          {
-                            owner = "catppuccin";
-                            repo = "starship";
-                            rev = "3e3e54410c3189053f4da7a7043261361a1ed1bc"; # Replace with the latest commit hash
-                            sha256 = "sha256-soEBVlq3ULeiZFAdQYMRFuswIIhI9bclIU8WXjxd7oY=";
-                          }
-                          + /palettes/${flavour}.toml));
-                  };
-
-                  # Let Home Manager install and manage itself.
-                  programs.home-manager.enable = true;
-
-                  # configure git
-                  programs.git = {
-                    enable = true;
-                    settings.user.name = "Hanz";
-                    settings.user.email = "haniel56@zoho.eu";
-
-                    ignores = [
-                      ".direnv"
+                    home.packages = with pkgs; [
+                      iina # video player for macOS
                     ];
- 
-                    settings.pull.rebase = true;
-                    settings.init.defaultBranch = "main";
-                    settings.github.user = "fivehanz"; 
-                  };
 
-
-                  programs.zellij = {
-                    enable = true;
-                    # enableFishIntegration = true;
-                    settings = {
-                      simplified_ui = true;
+                    home.sessionVariables = {
+                      PAGER = "less";
+                      CLICLOLOR = 1;
+                      EDITOR = "nvim";
+                      ZELLIJ_AUTO_EXIT = "true";
                     };
-                  };
 
-                  programs.direnv = {
-                    enable = true;
-                    nix-direnv.enable = true;
-                  };
-                })
+                    programs.neovim = {
+                      enable = true;
+                      viAlias = true;
+                      vimAlias = true;
+                      # extraPackages = with pkgs; [gcc];
+                    };
+
+                    programs.zoxide = {
+                      enable = true; # smarter 'cd'
+                      enableFishIntegration = true;
+                    };
+
+                    programs.bat.enable = true;
+                    programs.fzf.enable = true;
+                    programs.fzf.enableFishIntegration = true;
+                    programs.lsd.enable = true;
+                    programs.lsd.enableFishIntegration = true;
+
+                    programs.fish = {
+                      enable = true;
+                      shellAliases = {
+                        zj = "zellij";
+                        lg = "lazygit";
+                        gs = "git status -s";
+                        gcom = "git commit";
+                        gpush = "git push";
+                        gpull = "git pull";
+                        glog = "git log";
+                        gdiff = "git diff";
+                        cat = "bat";
+                        n = "nvim";
+                        vim = "nvim";
+                      };
+                      shellInit = ''
+                        mise activate fish | source
+                        atuin init fish | source
+                        if test -x /opt/homebrew/bin/brew
+                          eval "$(/opt/homebrew/bin/brew shellenv)"
+                        end
+                      '';
+                    };
+
+                    programs.starship =
+                      let
+                        flavour = "mocha"; # One of `latte`, `frappe`, `macchiato`, or `mocha`
+                      in
+                      {
+                        enable = true;
+                        enableFishIntegration = true;
+
+                        settings = {
+                          # Other config here
+                          format = "$all"; # Remove this line to disable the default prompt format
+                          palette = "catppuccin_${flavour}";
+                        }
+                        // builtins.fromTOML (
+                          builtins.readFile (
+                            pkgs.fetchFromGitHub {
+                              owner = "catppuccin";
+                              repo = "starship";
+                              rev = "3e3e54410c3189053f4da7a7043261361a1ed1bc"; # Replace with the latest commit hash
+                              sha256 = "sha256-soEBVlq3ULeiZFAdQYMRFuswIIhI9bclIU8WXjxd7oY=";
+                            }
+                            + /palettes/${flavour}.toml
+                          )
+                        );
+                      };
+
+                    # Let Home Manager install and manage itself.
+                    programs.home-manager.enable = true;
+
+                    # configure git
+                    programs.git = {
+                      enable = true;
+                      settings.user.name = "Hanz";
+                      settings.user.email = "haniel56@zoho.eu";
+
+                      ignores = [
+                        ".direnv"
+                      ];
+
+                      settings.pull.rebase = true;
+                      settings.init.defaultBranch = "main";
+                      settings.github.user = "fivehanz";
+                    };
+
+                    programs.zellij = {
+                      enable = true;
+                      # enableFishIntegration = true;
+                      settings = {
+                        simplified_ui = true;
+                      };
+                    };
+
+                    programs.direnv = {
+                      enable = true;
+                      nix-direnv.enable = true;
+                    };
+                  }
+                )
               ];
             };
           }
