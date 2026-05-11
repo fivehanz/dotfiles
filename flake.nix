@@ -59,7 +59,18 @@
               k9s # cli k8s ide
               utm
               mise
-              ncdu 
+              ncdu
+
+	      # doom emacs
+	      nixfmt
+	      shfmt
+	      dockfmt
+	      gomodifytags
+	      gotests
+	      gore
+	      black
+	      isort
+	      pipenv
             ];
 
 
