@@ -62,7 +62,6 @@
                 atuin
                 k6 # load testing tool
                 k9s # cli k8s ide
-                utm
                 mise
                 ncdu
 
