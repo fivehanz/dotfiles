@@ -8,9 +8,9 @@
 
   inputs = {
     # nixpkgs url
-    nixpkgs.url = "github:nixos/nixpkgs/release-25.11";
-    # nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
-    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+    # nixpkgs.url = "github:nixos/nixpkgs/release-25.11";
+    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+    # nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
 
     # links configs to home directory
     home-manager = {
