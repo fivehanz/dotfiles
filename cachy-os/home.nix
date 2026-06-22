@@ -63,6 +63,7 @@
     # -- GUI Apps --
     qbittorrent
     persepolis # download manager
+    peazip # archive manager
   ];
 
   home.sessionVariables = {
