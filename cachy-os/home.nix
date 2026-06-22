@@ -62,6 +62,7 @@
 
     # -- GUI Apps --
     qbittorrent
+    persepolis # download manager
   ];
 
   home.sessionVariables = {

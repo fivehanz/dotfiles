@@ -65,6 +65,8 @@
                 mise
                 ncdu
 
+		persepolis # download manager
+
                 # doom emacs
                 nixfmt
                 shfmt
