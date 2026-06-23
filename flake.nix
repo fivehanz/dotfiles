@@ -81,7 +81,7 @@
               system.keyboard.enableKeyMapping = true;
               system.keyboard.remapCapsLockToEscape = true;
 
-              system.defaults.dock.autohide = true;
+              system.defaults.dock.autohide = false;
               system.defaults.NSGlobalDomain.InitialKeyRepeat = 14;
               system.defaults.NSGlobalDomain.KeyRepeat = 1;
 
